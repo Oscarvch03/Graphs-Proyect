@@ -21,14 +21,14 @@ conds_iniciales = np.array([x0, y0])
 # Condiciones para integración
 tf = 20
 N = 1000
-t = np.linspace(0, tf, N)
+t = np.linspace(0, tf, N) # Intervalo de tiempo
 
 solucion = odeint(df_dt, conds_iniciales, t, args=(a, b, c, d))
 xf = solucion[:, 0]
-xfr = [round(i) for i in xf]
+xfr = [round(i) for i in xf] # Cantidad de presas
 
 yf = solucion[:, 1]
-yfr = [round(i) for i in yf]
+yfr = [round(i) for i in yf] # Cantidad de depredadores
 
 print('xf =', xfr)
 print('yf =', yfr)
