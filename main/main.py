@@ -163,7 +163,7 @@ def get_fig(G, p0, pf, d0, df, col, muertes, p, d):
 
 
 
-delta = 20
+delta = 15
 
 
 
@@ -211,25 +211,29 @@ Di = D[0]
 add_vertex(G, P[0], colores, "blue")
 add_vertex(G, D[0], colores, "red")
 
-num_plots = len(t);
+num_plots = len(t)
+n = 1
 for i in range(num_plots - 1):
     print("Tiempo =", i)
-    print("Presas:", P[i])
-    print("Depredadores:", D[i])
-    print("Total =", P[i] + D[i])
-    print()
+    # print("Presas:", P[i])
+    # print("Depredadores:", D[i])
+    # print("Total =", P[i] + D[i])
+    # print()
 
     if(i == 0):
         fig, colores = get_fig(G, P[i], P[i], D[i], D[i], colores, muertes, Pi, Di)
         fig.canvas.draw()
         pylab.draw()
-        plt.pause(10)
+        plt.pause(n)
         pylab.close(fig)
     else:
         fig, colores = get_fig(G, P[i], P[i + 1], D[i], D[i + 1], colores, muertes, Pi, Di)
         fig.canvas.draw()
         pylab.draw()
-        plt.pause(10)
+        if i == 10:
+            pylab.savefig("ResultadosGrafo.png")
+            break
+        plt.pause(n)
         pylab.close(fig)
 
 pylab.show()
