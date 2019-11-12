@@ -1,13 +1,29 @@
+################################################################################
+# LIBRERIAS IMPORTADAS #########################################################
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
+
+
+################################################################################
+# DEFINICION DE FUNCIONES Y VARIABLES GLOBALES #################################
+
+
 def df_dt(x, t, a, b, c, d):
     """Función del sistema en forma canónica"""
     dx = a * x[0] - b * x[0] * x[1]
     dy = - c * x[1] + d * x[0] * x[1]
+
     return np.array([dx, dy])
 
-# Parámetros
+
+################################################################################
+# BLOQUE PRINCIPAL DE INSTRUCCIONES ############################################
+
+
+# Parámetros del modelo
 a = 10
 b = 1
 c = 8
@@ -22,6 +38,7 @@ conds_iniciales = np.array([x0, y0])
 tf = 20
 N = 1000
 t = np.linspace(0, tf, N) # Intervalo de tiempo
+
 
 solucion = odeint(df_dt, conds_iniciales, t, args=(a, b, c, d))
 xf = solucion[:, 0]
