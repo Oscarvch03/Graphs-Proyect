@@ -163,7 +163,7 @@ def get_fig(G, p0, pf, d0, df, col, muertes, p, d):
 
 
 
-delta = 15
+delta = 10
 
 
 
@@ -230,9 +230,9 @@ for i in range(num_plots - 1):
         fig, colores = get_fig(G, P[i], P[i + 1], D[i], D[i + 1], colores, muertes, Pi, Di)
         fig.canvas.draw()
         pylab.draw()
-        if i == 10:
-            pylab.savefig("ResultadosGrafo.png")
-            break
+        # if i == 10:
+        #     pylab.savefig("ResultadosGrafo.png")
+        #     break
         plt.pause(n)
         pylab.close(fig)
 
